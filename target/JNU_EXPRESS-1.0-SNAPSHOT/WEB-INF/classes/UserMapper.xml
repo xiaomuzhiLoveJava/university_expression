@@ -1,0 +1,30 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Dao.UserMapper">
+
+    <select id="loginJudge" resultType="int" >
+        select * from jnu_express.user where PhoneNumb = #{PhoneNumb} and pwd = #{pwd}
+    </select>
+
+    <insert id="Registration" parameterType="pojo.Student">
+        insert into jnu_express.user(PhoneNumb,pwd,name,RoomNumb,property) values (#{PhoneNumb},#{pwd},#{name},#{RoomNumb},#{property})
+    </insert>
+
+    <update id="ChangeInformation" parameterType="pojo.Student">
+        update jnu_express.user set pwd = #{pwd},name = #{name},RoomNumb = #{RoomNumb} where PhoneNumb = #{PhoneNumb};
+    </update>
+
+    <update id="DistributeGoods" parameterType="pojo.Student">
+        update jnu_express.commodity set snderID = #{snderID},arriveDate = #{arriveDate} where ID = #{ID};
+    </update>
+
+    <select id="StuGetCommodities" resultType="pojo.Commodity"  parameterType="pojo.Student">
+        select * from jnu_express.commodity where ownerID = #{PhoneNumb}
+    </select>
+
+    <select id="DilGetCommodities" resultType="pojo.Commodity"  parameterType="pojo.DileverMan">
+        select * from jnu_express.commodity where senderID = #{PhoneNumb}
+    </select>
+</mapper>
