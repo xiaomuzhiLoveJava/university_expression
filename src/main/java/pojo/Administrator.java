@@ -1,23 +1,18 @@
 package pojo;
 
-public class Administrator {
-    String ID;
+public class Administrator implements User {
     String name;
     String pwd;
     String phoneNumb;
     int property;
 
-    public Administrator(String ID, String name,String pwd, String phoneNumb) {
-        this.ID = ID;
+    public Administrator( String name,String pwd, String phoneNumb) {
         this.name = name;
         this.pwd = pwd;
         this.phoneNumb = phoneNumb;
         this.property = 1;
     }
 
-    public String getID() {
-        return ID;
-    }
 
     public String getName() {
         return name;
@@ -25,10 +20,6 @@ public class Administrator {
 
     public String getPhoneNumb() {
         return phoneNumb;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public void setName(String name) {
@@ -45,6 +36,5 @@ public class Administrator {
 
     public void setSender(Commodity com,DileverMan dileverMan){
         dileverMan.commodities.add(com);
-        com.setSender(dileverMan.PhoneNumb);
     }
 }

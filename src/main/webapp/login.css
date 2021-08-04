@@ -1,107 +1,143 @@
-head{
-    background-size: 100%;
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(background.jpg) no-repeat;
+/*	background: rgba(0.5);*/
+	
+    background-size: 100% 100%;
+    background-attachment:fixed;
 }
-body {
-    background-size: 100%;
-    background-repeat: no-repeat;
+h1{
+    padding: 0;
+    color: #fff;
+    text-align: center;
+	margin-top:80px;
+	font-size: 75px;
 }
-#biaoti{
-    font-size: 150px;
-    color: #ffeb3b;
-    border: 100px ;
-    background: #3BD9FF;
-}
-#password{
-    background: #ffeb3b;
-    border: 20px;
-}
-#username{
-    background: #ffeb3b;
-    border: 20px;
-}
-#login_frame {
-    width: 400px;
-    height: 260px;
-    padding: 13px;
+.box{
+    /*绝对定位 */
+    position: absolute;     
 
-    position: absolute;
+    /* 居中 */
+    top: 60%;
     left: 50%;
-    top: 50%;
-    margin-left: -200px;
-    margin-top: -200px;
+    transform: translate(-50%,-50%);
 
-    background-color: rgba(240, 255, 255, 0.5);
+    /* 整个登陆图层的宽度 */
+    width: 400px;
 
-    border-radius: 10px;
+    /* 登陆图层内部元素跟图层边框的四周距离 */
+    padding: 40px;
+
+    /* 背景颜色 纯白 不透明度0.6 */
+    background: rgba(102, 102, 102, 0.7);
+
+    /* 设置box-sizing模式为border-box 这样内含图层的padding和border都会算在其大小中 */
+    box-sizing: border-box;
+
+    /* 添加阴影  x轴 y轴 blur 颜色*/
+    box-shadow: 0 15px 20px rgba(0,0,0,0.8);
+
+    /* 设置圆角 */
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+/* 设置box类中的h2标签属性 */
+.box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
     text-align: center;
 }
-title{
-    font-size: 100px;
-    flex-grow: inherit;
-}
 
-form p > * {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-#image_logo {
-    margin-top: 22px;
-}
-
-.label_input {
-    font-size: 14px;
-    font-family: 宋体;
-
-    width: 65px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-
-    color: white;
-    background-color: #3CD8FF;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-.text_field {
-    border: 2px;
-    border: #000000;
-    width: 278px;
-    height: 28px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 0;
-}
-
-#btn_login {
-    font-size: 14px;
-    font-family: 宋体;
-
-    width: 120px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-
-    color: white;
-    background-color: #3BD9FF;
-    border-radius: 6px;
-    border: 0;
-
-    float: left;
-}
-
-#forget_pwd {
-    font-size: 12px;
-    color: white;
-    text-decoration: none;
+/* 设置box类中的inputBox类为相对定位 */
+.box .inputBox{
     position: relative;
-    float: right;
-    top: 5px;
-
 }
 
+/* 设置box类中的inputBox类中的input标签属性 */
+.box .inputBox input{
 
-#login_control {
-    padding: 0 28px;
+    /* 宽度和父亲容器一致 */
+    width: 100%;
+
+    /* 上下内边距为10px 左右内边距为0px */
+    padding: 10px 0 5px;
+
+    /* 字体大小16px */
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+/* 设置box类中inputBox类中的label标签 */
+.box .inputBox label{
+    /* 绝对定位 
+        注意到上面已经把inputBox设置成了position: relative
+        所以这里的label是相对于inputBox的绝对定位  而不是相对于body
+    */
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+
+    /* 设置label标签的过渡动画时间为0.8秒 */
+    transition: .8s;
+}
+
+/* input监听获取焦点事件  改变选择的label标签的属性
+p~ul 选择前面有 <p> 元素的每个 <ul> 元素。
+我的理解是这里选同一inputBox中的每个<label>元素（<p>在这里没写即不做限制） 
+*/
+.box .inputBox input:focus ~label{
+    /* Username提示向上移动20px 并且缩小字体 修改颜色 */
+    top: -20px;
+    left:0;
+    font-size: 14px;
+    /* color:rgb(225, 240, 137); */
+    color: #9ff13b;
+}
+
+/* 监听input内容有效 保持label元素的属性 */
+.box .inputBox input:valid ~ label{
+    top: -20px;
+    left:0;
+    font-size: 14px;
+    /* color:rgb(225, 240, 137); */
+    color: #9ff13b;
+}
+
+/* 选择box类中type为submit的input标签 */
+.box input[type="button"]{
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* 相对定位 享对于其父亲box类*/
+    position: relative;
+
+    /* 实现按钮水平居中 */
+    /* 从父亲的左边宽度50%处开始 */
+    left: 50%;
+    /* 把元素沿着横向(x轴)移动自身宽度的50% */
+    transform: translate(-50%);
+
+    /* 实现元素相对于父亲水平/垂直居中都是用这种方法
+        left:50%;
+        top:50%;
+        transform:translate(-50%, -50%);
+    */
 }

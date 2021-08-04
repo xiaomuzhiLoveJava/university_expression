@@ -2,7 +2,7 @@ package pojo;
 
 import java.util.ArrayList;
 
-public class Student{
+public class Student implements User{
     String pwd;
     String name;
     String PhoneNumb;
@@ -19,8 +19,9 @@ public class Student{
         this.property = "2";
     }
 
-    public Student() {
-        this.commodities = new ArrayList<Commodity>();
+    @Override
+    public String toString() {
+        return "{ name:" + name + "Phone:"+ PhoneNumb;
     }
 
     public String getPwd() {
